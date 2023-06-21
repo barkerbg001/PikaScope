@@ -31,6 +31,13 @@ jobs:
       - name: Find APK files
         run: |
           find . -name "*.apk" -type f -print0 | xargs -0 -I {} echo "Found APK: {}"
+          
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-artifacts
+          path: |
+            $(find . -name "*.apk" -type f -print)
         
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
