@@ -25,7 +25,7 @@ jobs:
         run: dotnet restore
 
       - name: Build Android
-        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk **/*droid*.csproj
+        run: MSBuild **/*droid*.csproj /t:PackageForAndroid /p:Configuration=Debug
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
