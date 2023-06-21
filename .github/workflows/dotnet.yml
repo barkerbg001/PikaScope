@@ -27,6 +27,11 @@ jobs:
       - name: Build Xamarin Android project
         run: msbuild /t:Build /restore /p:Configuration=Release **/*droid*.csproj
         
+      
+      - name: Find APK files
+        run: |
+          find . -name "*.apk" -type f -print0 | xargs -0 -I {} echo "Found APK: {}"
+        
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
