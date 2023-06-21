@@ -24,23 +24,12 @@ jobs:
       - name: Restore NuGet packages
         run: dotnet restore
 
-      - name: Build Xamarin Android project
-        run: msbuild /t:Build /restore /p:Configuration=Release **/*droid*.csproj
-        
-      
-      - name: Find APK files
-        run: |
-          find . -name "*.apk" -type f -print0 | xargs -0 -I {} echo "Found APK: {}"
-          
-      - name: Archive artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-artifacts
-          path: |
-            $(find . -name "*.apk" -type f -print)
-        
+      - name: Build Android
+        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk **/*droid*.csproj
+
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
           path: |
-            ./
+            ./**/**/*.aab
+            ./**/**/*.apk
