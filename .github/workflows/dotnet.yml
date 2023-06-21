@@ -25,7 +25,7 @@ jobs:
         run: dotnet restore
 
       - name: Build Xamarin Android project
-        run: msbuild /t:Build /restore /p:Configuration=Release
+        run: msbuild /t:Build /restore /p:Configuration=Release **/*droid*.csproj
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
