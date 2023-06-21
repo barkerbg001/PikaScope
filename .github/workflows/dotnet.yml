@@ -26,10 +26,10 @@ jobs:
 
       - name: Build Xamarin Android project
         run: msbuild /t:Build /restore /p:Configuration=Release **/*droid*.csproj
-
-      - name: Archive artifacts
-        uses: actions/upload-artifact@v2
+        
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.0
         with:
-          name: app-artifacts
           path: |
-            path/to/output.apk
+            ./**/*.aab
+            ./**/*.apk
