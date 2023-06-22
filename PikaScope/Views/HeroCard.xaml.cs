@@ -151,7 +151,7 @@ namespace PikaScope.Views
             // apply the gradient shader
             _realNamePaint.Shader = GetGradientShader(SKColors.White, SKColors.Black);
 
-            canvas.DrawText(_viewModel.RealName, textPos, _realNamePaint);
+            canvas.DrawText(_viewModel.Name, textPos, _realNamePaint);
         }
 
         private void DrawHeroNameText(SKCanvas canvas)
@@ -160,7 +160,7 @@ namespace PikaScope.Views
             _heroNamePaint.Shader = GetGradientShader(SKColors.White, SKColors.Black);
 
             // split our text
-            var textbits = _viewModel.HeroName.Split(' ');
+            var textbits = _viewModel.Id.Split(' ');
 
             for (int i = 0; i < textbits.Length; i++)
             {
