@@ -36,7 +36,13 @@
 
 name: Build Xamarin.Android app
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -45,7 +51,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Setup .NET Core SDK 5.0.x
       uses: actions/setup-dotnet@v3
       with:
